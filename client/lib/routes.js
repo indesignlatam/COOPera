@@ -2,7 +2,11 @@ FlowRouter.route('/', {
 	name: 'home',
 	title: 'Inicio',
 	action(params) {
-		BlazeLayout.render("Layout", {content: "home"});
+		if(Meteor.loggingIn() || Meteor.userId()){
+			BlazeLayout.render("Layout", {content: "myEvents"});
+		} else {
+			FlowRouter.go("home")
+		}			
 	}
 });
 
