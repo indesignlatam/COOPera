@@ -20,7 +20,7 @@ Template.myEvents.helpers({
 		}
 	},
 	my_events_count(){
-		if(Helpers.isVolunteer()){
+		if(Helpers.userIsVolunteer()){
 			let volunteers = Volunteers.find({ volunteerId: Meteor.userId() }, {fields: { eventId: 1 }});
 			let eventIDs = [];
 

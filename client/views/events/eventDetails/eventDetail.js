@@ -1,16 +1,5 @@
 Template.eventDetail.onCreated(function eventDetailOnCreated() {
 	this.eventId = FlowRouter.getParam("id");
-	this.autorun((v) => {
-		this.subscribe('events.single', this.eventId);
-		this.subscribe('event-categories');
-		this.subscribe('cities');
-		this.subscribe('event-sponsors', this.eventId);
-		this.subscribe('event-volunteers', this.eventId);
-		this.subscribe('event-donations', this.eventId);
-		this.subscribe('event-comments', this.eventId);
-		this.subscribe('event-pictures', this.eventId);
-		this.subscribe('events.organization', this.eventId);
-	});
 });
 
 Template.eventDetail.onRendered(function eventDetailOnRendered() {
