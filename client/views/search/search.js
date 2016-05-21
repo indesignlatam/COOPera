@@ -124,6 +124,18 @@ Template.search.helpers({
 			limit: limit
 		}, { fields: Events.basicFields});
 
-		return Events.find().count() > events.count();
+    let events2 = Events.find({
+      $and:[
+        {'city': {'$regex': '.*' + city || '' + '.*', '$options' : 'i' }},
+        {'category': {'$regex': '.*' + category || '' + '.*', '$options' : 'i' }},
+        {
+          $or: [
+          {'name': {'$regex': '.*' + searchCriteria || '' + '.*', '$options' : 'i' }},
+          {'description': {'$regex': '.*' + searchCriteria || '' + '.*', '$options' : 'i' }},
+        ]
+        }
+      ]
+    }, { fields: Events.basicFields});
+		return events2.count() > events.count();
 	},
 });
