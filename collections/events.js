@@ -114,68 +114,68 @@ Events.basicFields = {
  */
 
 Events.helpers({
-	// isVolunteer(){
-	// 	let volunteer = Volunteers.findOne({ volunteerId: Meteor.userId(), eventId: this._id });
-	// 	if(volunteer){
-	// 		return true;
-	// 	}
-	// 	return false;
-	// },
-	// volunteersCount(){
-	// 	return Volunteers.find({ eventId: this._id }).count();
-	// },
-	// donationProgress(){
-	// 	let donations = EventDonations.find({eventId: this._id});
-	// 	let total = 0;
-	// 	donations.map((donation)=>{
-	// 		total += donation.ammount;
-	// 	})
-	// 	if(total == 0){
-	// 		return 0;
-	// 	}
-	// 	let progress = total/this.targetBudget;
-	// 	return (progress*100).toFixed(0);
-	// },
-	// donationProgressCapped(){
-	// 	let donations = EventDonations.find({eventId: this._id});
-	// 	let total = 0;
-	// 	donations.map((donation)=>{
-	// 		total += donation.ammount;
-	// 	})
-	//
-	// 	let progress = total/this.targetBudget;
-	// 	if(progress > 1){
-	// 		progress = 1;
-	// 	}
-	// 	return (progress*100).toFixed(0);
-	// },
-	cateogory() {
+	isVolunteer(){
+		let volunteer = Volunteers.findOne({ volunteerId: Meteor.userId(), eventId: this._id });
+		if(volunteer){
+			return true;
+		}
+		return false;
+	},
+	volunteersCount(){
+		return Volunteers.find({ eventId: this._id }).count();
+	},
+	donationProgress(){
+		let donations = EventDonations.find({eventId: this._id});
+		let total = 0;
+		donations.map((donation)=>{
+			total += donation.ammount;
+		})
+		if(total == 0){
+			return 0;
+		}
+		let progress = total/this.targetBudget;
+		return (progress*100).toFixed(0);
+	},
+	donationProgressCapped(){
+		let donations = EventDonations.find({eventId: this._id});
+		let total = 0;
+		donations.map((donation)=>{
+			total += donation.ammount;
+		})
+
+		let progress = total/this.targetBudget;
+		if(progress > 1){
+			progress = 1;
+		}
+		return (progress*100).toFixed(0);
+	},
+	category() {
 		return EventCategories.findOne(this.categoryId);
 	},
 	city() {
 		return Cities.findOne(this.cityId);
 	},
-	// organization(){
-	// 	return Organizations.findOne(this.organizationId);
-	// },
-	// mainImage() {
-	// 	return EventPictures.findOne({"metadata.eventId": this._id});
-	// },
-	// images() {
-	// 	return EventPictures.find({"metadata.eventId": this._id});
-	// },
-	// sponsorCount(){
-	// 	let donations = EventDonations.find({eventId:this._id}, {fields:{ sponsorId: 1 }});
-	//
-	// 	let sponsorIds = [];
-	//
-	// 	donations.map((donation)=>{
-	// 		sponsorIds.push(donation.sponsorId)
-	// 	});
-	//
-	// 	let uniqueSponsorIds = _.uniq(sponsorIds);
-	// 	return Sponsors.find({_id: {$in: uniqueSponsorIds}},{fields:{ _id: 1 }}).count();
-	// }
+	organization(){
+		return Organizations.findOne(this.organizationId);
+	},
+	mainImage() {
+		return EventPictures.findOne({"metadata.eventId": this._id});
+	},
+	images() {
+		return EventPictures.find({"metadata.eventId": this._id});
+	},
+	sponsorCount(){
+		let donations = EventDonations.find({eventId:this._id}, {fields:{ sponsorId: 1 }});
+
+		let sponsorIds = [];
+
+		donations.map((donation)=>{
+			sponsorIds.push(donation.sponsorId)
+		});
+
+		let uniqueSponsorIds = _.uniq(sponsorIds);
+		return Sponsors.find({_id: {$in: uniqueSponsorIds}},{fields:{ _id: 1 }}).count();
+	}
 });
 
 
