@@ -16,7 +16,12 @@ const EventDonationSchema = new SimpleSchema({
 	},
 	sponsorId: {
 		type: String,
-		label: "ID del sponsor"
+		label: "ID del sponsor",
+		optional: true
+	},
+	type:{
+		type: String,
+		label: "Tipo de cuenta que realiza donacion (volunteer, sponsor)"
 	},
 	createdAt: {
 		type: Date,
@@ -28,14 +33,14 @@ const EventDonationSchema = new SimpleSchema({
 			}
 		}
 	},
-	author: {
-		type: String,
-		autoValue() {
-			if (this.isInsert) {
-				return this.userId;
-			}
-		}
-	}
+  author: {
+      type: String,
+      autoValue: function() {
+          if (this.isInsert) {
+              return this.userId;
+          }
+      }
+  }
 });
 
 EventDonations.attachSchema(EventDonationSchema);
