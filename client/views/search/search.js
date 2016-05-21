@@ -94,4 +94,36 @@ Template.search.helpers({
 	cities() {
 		return Cities.find();
 	},
+  remainingEvents(){
+    let city = Template.instance().city.get();
+    let category = Template.instance().category.get();
+    let limit = Template.instance().limit.get();
+    let searchCriteria = Template.instance().search.get();
+
+    if (searchCriteria == null)
+      searchCriteria = '';
+
+    if (category == null)
+        category = '';
+
+    if (city == null)
+        city = '';
+
+    let events = Events.find({
+      $and:[
+        {'city': {'$regex': '.*' + city || '' + '.*', '$options' : 'i' }},
+        {'category': {'$regex': '.*' + category || '' + '.*', '$options' : 'i' }},
+        {
+          $or: [
+          {'name': {'$regex': '.*' + searchCriteria || '' + '.*', '$options' : 'i' }},
+          {'description': {'$regex': '.*' + searchCriteria || '' + '.*', '$options' : 'i' }},
+        ]
+        }
+      ]
+    },{
+			limit: limit
+		}, { fields: Events.basicFields});
+
+		return Events.find().count() > events.count();
+	},
 });
