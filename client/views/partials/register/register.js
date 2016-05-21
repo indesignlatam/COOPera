@@ -66,7 +66,7 @@ Template.register.events({
 				}
 			} else {
 				$('#registerModal').modal('hide');
-				// Meteor.call('users.sendVerificationLink');
+				FlowRouter.go("myEvents")
 				setTimeout(function() {
 					Bert.alert('Bienvenid@ ' + Meteor.user().profile.name, 'success');
 				}, 750);
@@ -113,7 +113,7 @@ Template.register.events({
 						}
 					} else {
 						$('#registerModal').modal('hide');
-						// Meteor.call('users.sendVerificationLink');
+						FlowRouter.go("myEvents")
 						setTimeout(function() {
 							Bert.alert('Bienvenid@ ' + Meteor.user().profile.name, 'success');
 						}, 750);
@@ -161,7 +161,6 @@ Template.register.events({
 					} else {
 						$('#registerModal').modal('hide');
 						FlowRouter.go("myEvents")
-						// Meteor.call('users.sendVerificationLink');
 						setTimeout(function() {
 							Bert.alert('Bienvenid@ ' + Meteor.user().profile.name, 'success');
 						}, 750);

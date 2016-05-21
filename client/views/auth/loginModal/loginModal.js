@@ -30,6 +30,7 @@ Template.loginModal.events({
 			if (error) {
 				Bert.alert('Correo o contraseña incorrectas', 'danger');
 			} else {
+				FlowRouter.go("myEvents")
 				$('#loginModal').modal('hide');
 			}
 		});
