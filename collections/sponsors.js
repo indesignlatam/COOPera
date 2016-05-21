@@ -1,4 +1,4 @@
-const Sponsors = new Mongo.Collection('sponsors');
+Sponsors = new Mongo.Collection('sponsors');
 
 const SponsorSchema = new SimpleSchema({
 	name: {
