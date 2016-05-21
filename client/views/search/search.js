@@ -3,18 +3,6 @@ Template.search.onCreated(function searchOnCreated() {
     this.category = new ReactiveVar(null);
     this.city = new ReactiveVar(null);
     this.limit = new ReactiveVar(9);
-    this.autorun((v) => {
-        this.subscribe('events.search',
-            this.search.get(),
-            this.limit.get(),
-            this.category.get(),
-            this.city.get()
-        );
-        this.subscribe('event-categories');
-        this.subscribe('cities');
-        this.subscribe('events.volunteers');
-        this.subscribe('sponsors');
-    });
 });
 
 Template.search.onRendered(function searchOnRendered() {
@@ -22,8 +10,6 @@ Template.search.onRendered(function searchOnRendered() {
 		placeholder:false
 	});
 });
-
-
 
 Template.search.events({
     'keyup .search' (event, instance) {
@@ -43,13 +29,64 @@ Template.search.events({
 
 Template.search.helpers({
 	events() {
-		return Events.find();
+    let city = Template.instance().city.get();
+    let category = Template.instance().category.get();
+    let limit = Template.instance().limit.get();
+    let searchCriteria = Template.instance().search.get();
+
+    if (searchCriteria == null)
+      searchCriteria = '';
+
+    if (category == null)
+        category = '';
+
+    if (city == null)
+        city = '';
+
+    let events = Events.find({
+			$and:[
+				{'city': {'$regex': '.*' + city || '' + '.*', '$options' : 'i' }},
+				{'category': {'$regex': '.*' + category || '' + '.*', '$options' : 'i' }},
+				{
+					$or: [
+					{'name': {'$regex': '.*' + searchCriteria || '' + '.*', '$options' : 'i' }},
+					{'description': {'$regex': '.*' + searchCriteria || '' + '.*', '$options' : 'i' }},
+				]
+				}
+			]
+    },{
+			limit: limit
+		}, { fields: Events.basicFields});
+		return events;
 	},
 	eventsCount(){
-		return Counts.get("cantidadEventos");
-	},
-	remainingEvents(){
-		return Counts.get("cantidadEventos") > Events.find().count();
+    let city = Template.instance().city.get();
+    let category = Template.instance().category.get();
+    let limit = Template.instance().limit.get();
+    let searchCriteria = Template.instance().search.get();
+
+    if (searchCriteria == null)
+      searchCriteria = '';
+
+    if (category == null)
+        category = '';
+
+    if (city == null)
+        city = '';
+
+    let events = Events.find({
+      $and:[
+        {'city': {'$regex': '.*' + city || '' + '.*', '$options' : 'i' }},
+        {'category': {'$regex': '.*' + category || '' + '.*', '$options' : 'i' }},
+        {
+          $or: [
+          {'name': {'$regex': '.*' + searchCriteria || '' + '.*', '$options' : 'i' }},
+          {'description': {'$regex': '.*' + searchCriteria || '' + '.*', '$options' : 'i' }},
+        ]
+        }
+      ]
+    }, { fields: Events.basicFields});
+    return events.count();
 	},
 	categories() {
 		return EventCategories.find();
