@@ -87,17 +87,6 @@ const adminSection = FlowRouter.group({
     prefix: "/admin"
 });
 
-// adminSection.route('/', {
-// 	name: 'BOHome',
-// 	title: 'Panel de Control',
-// 	action(params) {
-// 		BlazeLayout.render("Back_layout", {content: "Back_home"});
-// 	}
-// });
-
-
-
-
 /**
  * Login routes
  *
