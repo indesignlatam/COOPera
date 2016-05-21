@@ -1,6 +1,6 @@
 Organizations = new Mongo.Collection("organizations");
 
-OrganizationsSchema = new SimpleSchema ({
+const OrganizationsSchema = new SimpleSchema ({
   name: {
     type: String,
     label: "Nombre de la ONG",

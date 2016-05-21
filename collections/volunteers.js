@@ -1,6 +1,6 @@
 Volunteers = new Mongo.Collection("volunteers");
 
-VolunteersSchema = new SimpleSchema ({
+const VolunteersSchema = new SimpleSchema ({
   volunteerId: {
     type: String,
     label: "Id del voluntario",
