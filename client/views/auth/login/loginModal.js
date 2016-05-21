@@ -15,8 +15,6 @@ Template.loginModal.onRendered(function loginOnRendered() {
 	});
 });
 
-
-
 Template.loginModal.events({
 	'submit #loginForm' (event) {
 		event.preventDefault();
