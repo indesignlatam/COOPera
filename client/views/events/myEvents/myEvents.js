@@ -28,7 +28,6 @@ Template.myEvents.helpers({
 		else if(Helpers.isOrganization()){
 			let user = Meteor.users.findOne(Meteor.userId())
 			let organizationId = user.profile.organizationId;
-			let organization = Organizations.findOne(organizationId);
 			let today = new Date();
 			let cursor = Events.find({organizationId:organizationId, scheduledDate:{	$gte: today }}, { fields: Events.basicFields});
 			return cursor;
@@ -65,7 +64,6 @@ Template.myEvents.helpers({
 		else if(Helpers.isOrganization()){
 			let user = Meteor.users.findOne(Meteor.userId())
 			let organizationId = user.profile.organizationId;
-			let organization = Organizations.findOne(organizationId);
 			let today = new Date();
 			let cursor = Events.find({organizationId:organizationId, scheduledDate:{	$gte: today }}, { fields: Events.basicFields});
 			return cursor.count();
