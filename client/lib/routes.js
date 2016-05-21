@@ -11,7 +11,7 @@ FlowRouter.route('/search', {
 	title: 'Buscar eventos',
 	action(params) {
 		if(Meteor.loggingIn() || Meteor.userId()){
-			BlazeLayout.render("Front_layout", {content: "search"});
+			BlazeLayout.render("Layout", {content: "search"});
 		}else{
 			FlowRouter.go("home")
 		}
@@ -23,7 +23,7 @@ FlowRouter.route('/events/create', {
 	title: 'Crear evento',
 	action(params) {
 		if(Meteor.loggingIn() || Meteor.userId()){
-			BlazeLayout.render("Front_layout", {content: "eventCreate"});
+			BlazeLayout.render("Layout", {content: "eventCreate"});
 		}else{
 			FlowRouter.go("home")
 		}
@@ -35,7 +35,7 @@ FlowRouter.route('/events/:id/edit', {
 	title: 'Editar evento',
 	action(params) {
 		if(Meteor.loggingIn() || Meteor.userId()){
-			BlazeLayout.render("Front_layout", {content: "eventEdit", id:params.id});
+			BlazeLayout.render("Layout", {content: "eventEdit", id:params.id});
 		}else{
 			FlowRouter.go("home")
 		}
@@ -47,7 +47,7 @@ FlowRouter.route('/events/:id', {
 	title: 'Event name cant go here - goes in onCreated view event',
 	action(params) {
 		if(Meteor.loggingIn() || Meteor.userId()){
-			BlazeLayout.render("Front_layout", {content: "eventDetail", id:params.id});
+			BlazeLayout.render("Layout", {content: "eventDetail", id:params.id});
 		}else{
 			FlowRouter.go("home")
 		}
@@ -59,7 +59,7 @@ FlowRouter.route('/my-events', {
 	title: 'Mis eventos',
 	action(params) {
 		if(Meteor.loggingIn() || Meteor.userId()){
-			BlazeLayout.render("Front_layout", {content: "myEvents"});
+			BlazeLayout.render("Layout", {content: "myEvents"});
 		}else{
 			FlowRouter.go("home")
 		}
@@ -71,7 +71,7 @@ FlowRouter.route('/organizations/:id', {
 	title: 'Organizacion',
 	action(params) {
 		if(Meteor.loggingIn() || Meteor.userId()){
-			BlazeLayout.render("Front_layout", {content: "organizationDetail", id:params.id});
+			BlazeLayout.render("Layout", {content: "organizationDetail", id:params.id});
 		}else{
 			FlowRouter.go("home")
 		}
@@ -112,7 +112,7 @@ FlowRouter.route( '/register', {
 	triggersEnter: [onlyGuest],
 	action(params) {
 		GAnalytics.pageview();
-		BlazeLayout.render("Front_layout", {content: "register"});
+		BlazeLayout.render("Layout", {content: "register"});
 	}
 });
 
@@ -121,7 +121,7 @@ FlowRouter.route( '/reset-password', {
 	title: 'Olvide mi contraseña',
 	action(params) {
 		GAnalytics.pageview();
-		BlazeLayout.render("Front_layout", {content: "passwordResetEmail"});
+		BlazeLayout.render("Layout", {content: "passwordResetEmail"});
 	}
 });
 
@@ -130,7 +130,7 @@ FlowRouter.route( '/reset-password/:token', {
 	title: 'Cambiar contraseña',
 	action(params) {
 		GAnalytics.pageview();
-		BlazeLayout.render("Front_layout", {content: "passwordReset"});
+		BlazeLayout.render("Layout", {content: "passwordReset"});
 	}
 });
 
@@ -140,7 +140,7 @@ FlowRouter.route( '/reset-password/:token', {
  */
 FlowRouter.notFound = {
 	action() {
-		BlazeLayout.render("Front_layout", {content: "notFound"});
+		BlazeLayout.render("Layout", {content: "notFound"});
 	}
 };
 
