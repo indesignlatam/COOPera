@@ -47,7 +47,3 @@ const OrganizationsSchema = new SimpleSchema ({
     }
   }
 });
-
-Meteor.methods({
-
-});

@@ -40,6 +40,7 @@ email
 cfs:standard-packages
 cfs:base-package
 cfs:gridfs
+check
 
 # FRONTEND
 indesign:ganalytics

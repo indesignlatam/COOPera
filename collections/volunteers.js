@@ -23,7 +23,3 @@ const VolunteersSchema = new SimpleSchema ({
     }
   }
 });
-
-Meteor.methods({
-
-});
