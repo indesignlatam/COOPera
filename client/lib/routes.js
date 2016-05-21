@@ -5,8 +5,8 @@ FlowRouter.route('/', {
 		if(Meteor.loggingIn() || Meteor.userId()){
 			BlazeLayout.render("Layout", {content: "myEvents"});
 		} else {
-			FlowRouter.go("home")
-		}			
+			BlazeLayout.render("Layout", {content: "home"});
+		}
 	}
 });
 
