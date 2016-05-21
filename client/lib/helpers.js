@@ -17,7 +17,7 @@ Template.registerHelper("getEmail", function(user){
 	return user.emails[0].address;
 });
 
-Template.registerHelper("isVolunteer", function(){
+Template.registerHelper("userIsVolunteer", function(){
 	let user = Meteor.user();
 	if(!user){
 		return null;

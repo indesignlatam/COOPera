@@ -20,7 +20,7 @@ Users.helpers({
     myEvents(){
       let user = Meteor.user()
       let today = new Date();
-      if(Helpers.isVolunteer()){
+      if(Helpers.userIsVolunteer()){
   			let volunteers = Volunteers.find({ volunteerId: Meteor.userId() }, {fields: { eventId: 1 }});
   			let eventIDs = [];
 
