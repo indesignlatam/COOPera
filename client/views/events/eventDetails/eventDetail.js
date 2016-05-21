@@ -111,7 +111,7 @@ Template.eventDetail.helpers({
 		return EventComments.find({eventId: Template.instance().eventId});
 	},
 	canDonate(){
-		if(Helpers.isVolunteer() || Helpers.isSponsor()){
+		if(Helpers.userIsVolunteer() || Helpers.isSponsor()){
 			return true;
 		}
 		return false;
