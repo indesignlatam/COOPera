@@ -149,11 +149,11 @@ Events.helpers({
 		}
 		return (progress*100).toFixed(0);
 	},
-	category() {
-		return EventCategories.findOne(this.categoryId);
+	categoryData() {
+		return EventCategories.findOne(this.category);
 	},
-	city() {
-		return Cities.findOne(this.cityId);
+	cityData() {
+		return Cities.findOne(this.city);
 	},
 	organization(){
 		return Organizations.findOne(this.organizationId);
