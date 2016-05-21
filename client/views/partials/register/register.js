@@ -87,11 +87,10 @@ Template.register.events({
 		};
 
 		Meteor.call("organizations.create", orgData, (error, result) =>{
+			console.log("Hello");
 			if(error){
 				console.log("error", error);
-			}
-			if(result){
-
+			} else {
 				const userData = {
 					email: event.target.email.value,
 					password: event.target.password.value,
@@ -103,7 +102,10 @@ Template.register.events({
 					}
 				};
 
+				console.log("Hello");
+
 				Accounts.createUser(userData, (error) => {
+					console.log("Hello");
 					$(event.currentTarget).removeClass('loading');
 					if (error) {
 						if (error.reason == "Email already exists.") {
@@ -137,8 +139,7 @@ Template.register.events({
 		Meteor.call("sponsors.create", sponsorData, function(error, result){
 			if(error){
 				console.log("error", error);
-			}
-			else{
+			} else {
 
 				const userData = {
 					email: event.target.email.value,
