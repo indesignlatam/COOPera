@@ -5,15 +5,18 @@ Template.eventDetail.onCreated(function eventDetailOnCreated() {
 Template.eventDetail.onRendered(function eventDetailOnRendered() {
 	$('html, body').scrollTop(0);
 
+
 	this.autorun(() => {
+
 			let event = Events.findOne(this.eventId);
 			if(event){
 				document.title = event.name + ' | Eventos';
-				if(event.isVolunteer() && event.hasEnded()){
+				if(event.isVolunteer() && event.hasEnded() && !event.hasReview()){
 					$('#reviewModal').modal('show');
 				}
 			}
 			setTimeout(function() {
+				$('.ui.rating2').rating();
 				const eventSwiper = new Swiper('.swiper-container', {
 					pagination: '.swiper-pagination',
 					autoplay: 5000,

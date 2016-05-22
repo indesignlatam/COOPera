@@ -201,6 +201,14 @@ Events.helpers({
 			return true
 		}
 		return false
+	},
+	hasReview(){
+		let review = EventReviews.find({eventId:this._id, author:Meteor.userId()}).count();
+
+		if(review > 0){
+			return true
+		}
+		return false
 	}
 });
 
