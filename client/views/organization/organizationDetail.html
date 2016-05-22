@@ -4,18 +4,12 @@
 	</div>
 
 	<div class="ui container org">
-		<h1 class="ui dividing header text-center">Nombre de la organizacion</h1>
+		<h1 class="ui dividing header text-center">{{organization.name}}</h1>
 
 		<div class="ui grid">
 			<div class="eleven wide column">
 				<div class="ui segment">
-					Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-					Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-					Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-					Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-					Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-					Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-					Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+					{{organization.description}}
 				</div>
 			</div>
 
@@ -31,7 +25,7 @@
 
 						<div class="item">
 							<i class="calendar icon"></i>
-							<div class="content">3 eventos</div>
+							<div class="content">{{organization.eventsCount}} eventos</div>
 						</div>
 
 						<div class="item">
@@ -39,11 +33,11 @@
 							<div class="content">Bogotá, Colombia</div>
 						</div>
 
-						{{#if event.organization.url}}
+						{{#if organization.url}}
 						  <div class="item">
 							  <i class="linkify icon"></i>
 							  <div class="content">
-								  <a href="#" class="text-muted">{{event.organization.url}}</a>
+								  <a href="#" class="text-muted">{{organization.url}}</a>
 							  </div>
 						  </div>
 						{{/if}}
@@ -88,9 +82,10 @@
 				<h3 class="ui dividing header">Eventos de la organización</h3>
 				<div class="ui segment">
 					<div class="ui three cards">
-						{{> eventCard event=event}}
-						{{> eventCard event=event}}
-						{{> eventCard event=event}}
+						{{#each organization.events}}
+						  	{{> eventCard }}
+						{{/each}}
+
 					</div>
 				</div>
 			</div>

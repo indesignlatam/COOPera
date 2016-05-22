@@ -47,3 +47,15 @@ const OrganizationsSchema = new SimpleSchema ({
     }
   }
 });
+
+
+Organizations.attachSchema(OrganizationsSchema);
+
+Organizations.helpers({
+	events() {
+    return Events.find({organizationId:this._id},{limit:9});
+	},
+  eventsCount(){
+    return Events.find({organizationId:this._id}).count();
+  }
+});
