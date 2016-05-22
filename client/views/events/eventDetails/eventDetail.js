@@ -77,7 +77,7 @@ Template.eventDetail.events({
 				console.log(error);
 				Bert.alert(error.reason, 'danger');
 			}else{
-				console.log(result);
+				event.target.reset()
 			}
 		});
 	}
@@ -97,7 +97,7 @@ Template.eventDetail.helpers({
 		return EventPictures.find();
 	},
 	comments() {
-		return EventComments.find({eventId: Template.instance().eventId});
+		return EventComments.find({eventId: Template.instance().eventId},{sort:{createdAt:-1}});
 	},
 	canDonate(){
 		if(Helpers.userIsVolunteer() || Helpers.isSponsor()){
