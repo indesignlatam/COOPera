@@ -75,5 +75,5 @@ Template.myEvents.helpers({
 	},
 	segment2(){
 		return Template.instance().segment2.get();
-	}
+	}	
 });

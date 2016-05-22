@@ -186,6 +186,9 @@ Events.helpers({
 
 		let uniqueSponsorIds = _.uniq(sponsorIds);
 		return Sponsors.find({_id: {$in: uniqueSponsorIds}},{fields:{ _id: 1 }}).count();
+	},
+	organizationData(){
+		return Organizations.findOne(this.organizationId);
 	}
 });
 
