@@ -2,6 +2,7 @@ Template.search.onCreated(function searchOnCreated() {
     this.search = new ReactiveVar(null);
     this.category = new ReactiveVar(null);
     this.city = new ReactiveVar(null);
+    this.organizations = new ReactiveVar(null);
     this.limit = new ReactiveVar(9);
 });
 
@@ -31,6 +32,7 @@ Template.search.helpers({
 	events() {
     let city = Template.instance().city.get();
     let category = Template.instance().category.get();
+    let organizations = Template.instance().organizations.get();
     let limit = Template.instance().limit.get();
     let searchCriteria = Template.instance().search.get();
 
@@ -43,14 +45,19 @@ Template.search.helpers({
     if (city == null)
         city = '';
 
+    if (organizationId == null)
+      organizationId = '';
+
     let events = Events.find({
 			$and:[
 				{'city': {'$regex': '.*' + city || '' + '.*', '$options' : 'i' }},
 				{'category': {'$regex': '.*' + category || '' + '.*', '$options' : 'i' }},
+        {'organizationId': {'$regex': '.*' + organizations || '' + '.*', '$options' : 'i' }},
 				{
 					$or: [
 					{'name': {'$regex': '.*' + searchCriteria || '' + '.*', '$options' : 'i' }},
 					{'description': {'$regex': '.*' + searchCriteria || '' + '.*', '$options' : 'i' }},
+          {'organizationId': {'$regex': '.*' + organizations || '' + '.*', '$options' : 'i' }},
 				]
 				}
 			]
@@ -62,6 +69,7 @@ Template.search.helpers({
 	eventsCount(){
     let city = Template.instance().city.get();
     let category = Template.instance().category.get();
+    let organizations = Template.instance().organizations.get();
     let limit = Template.instance().limit.get();
     let searchCriteria = Template.instance().search.get();
 
@@ -74,14 +82,19 @@ Template.search.helpers({
     if (city == null)
         city = '';
 
+    if (organizationId == null)
+      organizationId = '';
+
     let events = Events.find({
       $and:[
         {'city': {'$regex': '.*' + city || '' + '.*', '$options' : 'i' }},
         {'category': {'$regex': '.*' + category || '' + '.*', '$options' : 'i' }},
+        {'organizationId': {'$regex': '.*' + organizations || '' + '.*', '$options' : 'i' }},
         {
           $or: [
           {'name': {'$regex': '.*' + searchCriteria || '' + '.*', '$options' : 'i' }},
           {'description': {'$regex': '.*' + searchCriteria || '' + '.*', '$options' : 'i' }},
+          {'organizationId': {'$regex': '.*' + organizations || '' + '.*', '$options' : 'i' }},
         ]
         }
       ]
@@ -94,10 +107,14 @@ Template.search.helpers({
 	cities() {
 		return Cities.find();
 	},
+  organizations() {
+    return Organizations.find();
+  },
   remainingEvents(){
     let city = Template.instance().city.get();
     let category = Template.instance().category.get();
     let limit = Template.instance().limit.get();
+    let organizations = Template.instance().organizations.get();
     let searchCriteria = Template.instance().search.get();
 
     if (searchCriteria == null)
@@ -109,14 +126,19 @@ Template.search.helpers({
     if (city == null)
         city = '';
 
+    if (organizationId == null)
+      organizationId = '';
+
     let events = Events.find({
       $and:[
         {'city': {'$regex': '.*' + city || '' + '.*', '$options' : 'i' }},
         {'category': {'$regex': '.*' + category || '' + '.*', '$options' : 'i' }},
+        {'organizationId': {'$regex': '.*' + organizations || '' + '.*', '$options' : 'i' }},
         {
           $or: [
           {'name': {'$regex': '.*' + searchCriteria || '' + '.*', '$options' : 'i' }},
           {'description': {'$regex': '.*' + searchCriteria || '' + '.*', '$options' : 'i' }},
+          {'organizationId': {'$regex': '.*' + organizations || '' + '.*', '$options' : 'i' }},
         ]
         }
       ]
@@ -128,10 +150,12 @@ Template.search.helpers({
       $and:[
         {'city': {'$regex': '.*' + city || '' + '.*', '$options' : 'i' }},
         {'category': {'$regex': '.*' + category || '' + '.*', '$options' : 'i' }},
+        {'organizationId': {'$regex': '.*' + organizations || '' + '.*', '$options' : 'i' }},
         {
           $or: [
           {'name': {'$regex': '.*' + searchCriteria || '' + '.*', '$options' : 'i' }},
           {'description': {'$regex': '.*' + searchCriteria || '' + '.*', '$options' : 'i' }},
+          {'organizationId': {'$regex': '.*' + organizations || '' + '.*', '$options' : 'i' }},
         ]
         }
       ]

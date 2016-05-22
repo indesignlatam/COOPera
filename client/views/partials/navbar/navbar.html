@@ -13,12 +13,12 @@
 				{{/if}}
 			</div>
 			{{#if currentUser}}
-				<a href="{{path 'myEvents'}}" class="{{isSelectedItem 'myEvents'}} item">Mis eventos</a>
+				<a href="{{path 'myEvents'}}" class="{{isSelectedItem 'myEvents'}} item">Mis acciones</a>
 				{{else}}
 				<a href="{{path 'home'}}" class="{{isSelectedItem 'home'}} item">Inicio</a>
 			{{/if}}
 			{{#if currentUser}}
-				<a href="{{path 'search'}}" class="{{isSelectedItem 'search'}} item">Buscar eventos</a>
+				<a href="{{path 'search'}}" class="{{isSelectedItem 'search'}} item">Buscar acciones</a>
 				<!-- <a href="{{path 'organizations'}}" class="{{isSelectedItem 'organizations'}} item">Organizaciones</a> -->
 				{{#if isOrganization}}
 				<a href="{{path 'eventCreate'}}" class="{{isSelectedItem 'eventCreate'}} item">Crear</a>
@@ -31,7 +31,7 @@
 						<i class="ui dropdown icon"></i>
 						<div class="menu">
 							<a class="{{isSelectedItem 'account'}} item" href="{{path 'account'}}">Mi cuenta</a>
-							<a class="{{isSelectedItem 'myEvents'}} item" href="{{path 'myEvents'}}">Mis eventos</a>
+							<a class="{{isSelectedItem 'myEvents'}} item" href="{{path 'myEvents'}}">Mis acciones</a>
 							{{#if isInRole 'admin' 'default-group'}}
 								<a class="item" href="/admin">Panel de Control</a>
 							{{/if}}

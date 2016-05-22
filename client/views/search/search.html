@@ -33,6 +33,16 @@
 							</select>
 						</div>
 
+						<div class="field">
+							<label>Organizaciones</label>
+							<select class="ui search selection dropdown" id="categoryId" name="categoryId">
+								<option value="">Selecciona una organización</option>
+								{{#each organizations}}
+									<option value={{_id}}>{{name}}</option>
+								{{/each}}
+							</select>
+						</div>
+
 					</div>
 				</div>
 			</form>
