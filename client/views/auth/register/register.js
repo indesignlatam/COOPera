@@ -1,13 +1,13 @@
 Template.register.onCreated(function registerOnCreated() {
-	this.autorun((v) => {
-		this.subscribe('event-categories');
+
+});
+
+Template.register.onRendered(function registerOnRendered() {
+	$('#city').dropdown({
+		placeholder:false
 	});
 });
 
-// Template.register.onRendered(function registerOnRendered() {
-//
-// });
-//
 
 Template.register.events({
 	'click .button.volunteer'(event, instance) {
@@ -51,6 +51,7 @@ Template.register.events({
 			profile: {
 				name: event.target.name.value,
 				categories: categories,
+				city: event.target.city.value,
 				phone: event.target.phone.value,
 				type: "volunteer",
 				source: 'web'
@@ -175,5 +176,8 @@ Template.register.events({
 Template.register.helpers({
 	categories() {
 		return EventCategories.find();
+	},
+	cities(){
+		return Cities.find();
 	}
 });
