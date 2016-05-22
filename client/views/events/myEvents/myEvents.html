@@ -26,32 +26,32 @@
 
                 <div class="seven wide column">
                     <div class="events-info-container">
-                        <div class="near-events-circle text-center text-contrast text-h2">
+                        <div id="segment1circle" class="near-events-circle text-center text-contrast text-h2">
                         {{my_events_count}}
                         </div>
                         {{#if userIsVolunteer}}
-                     <span id="segment1" class="text-contrast text-h2">Eventos en los que participas</span>
+                     <span id="segment1" class="text-contrast text-h2">Acciones en los que participas</span>
                         <br>
-                        <div class="near-events-circle text-center text-contrast text-h2 margin-top-small">
+                        <div id="segment2circle" class="near-events-circle text-center text-contrast text-h2 margin-top-small">
                             {{recommendedEventsCount}}
                         </div>
-                        <span id="segment2" class="text-contrast text-h2">Eventos recomendados para ti</span>
+                        <span id="segment2" class="text-contrast text-h2">Acciones recomendadas para ti</span>
                         {{/if}}
                         {{#if isOrganization}}
-                        <span  id="segment1"  class="text-contrast text-h2">Eventos que estoy organizando</span>
+                        <span  id="segment1"  class="text-contrast text-h2">Acciones que estoy organizando</span>
                         <br>
-                        <div class="near-events-circle text-center text-contrast text-h2 margin-top-small">
+                        <div id="segment2circle" class="near-events-circle text-center text-contrast text-h2 margin-top-small">
                             {{myExecutedEventsCount}}
                         </div>
-                        <span  id="segment2"  class="text-contrast text-h2">Eventos ejecutados</span>
+                        <span  id="segment2"  class="text-contrast text-h2">Acciones ejecutadas</span>
                         {{/if}}
                         {{#if isSponsor}}
-                        <span  id="segment1"  class="text-contrast text-h2">Eventos que patrocinas</span>
+                        <span  id="segment1"  class="text-contrast text-h2">Acciones que patrocinas</span>
                         <br>
-                        <div class="near-events-circle text-center text-contrast text-h2 margin-top-small">
+                        <div id="segment2circle" class="near-events-circle text-center text-contrast text-h2 margin-top-small">
                             {{my_popular_events_count}}
                         </div>
-                        <span  id="segment2" class="text-contrast text-h2">Eventos populares</span>
+                        <span  id="segment2" class="text-contrast text-h2">Acciones populares</span>
                         {{/if}}
                     </div>
                 </div>

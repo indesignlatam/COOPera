@@ -15,6 +15,14 @@ Template.myEvents.events({
 	'click #segment2'(event, instance) {
 		Template.instance().segment1.set(false);
 		Template.instance().segment2.set(true);
+	},
+	'click #segment1circle'(event, instance) {
+		Template.instance().segment1.set(true);
+		Template.instance().segment2.set(false);
+	},
+	'click #segment2circle'(event, instance) {
+		Template.instance().segment1.set(false);
+		Template.instance().segment2.set(true);
 	}
 });
 
@@ -75,5 +83,11 @@ Template.myEvents.helpers({
 	},
 	segment2(){
 		return Template.instance().segment2.get();
-	}	
+	},
+	segment1circle(){
+		return Template.instance().segment1circle.get();
+	},
+	segment2circle(){
+		return Template.instance().segment2circle.get();
+	}
 });
