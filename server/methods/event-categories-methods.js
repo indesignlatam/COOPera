@@ -3,7 +3,7 @@ Meteor.methods({
   'event_categories.create'(categories){
     Meteor.users.update(this.userId,{
       $set:{
-          categories: categories
+          'profile.categories': categories
       }
     },{
       bypassCollection2:true
