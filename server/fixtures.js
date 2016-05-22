@@ -146,7 +146,7 @@ Meteor.startup(function(){
 		const cities		= Cities.find({}, {fields: {_id: true}}).fetch();
 		const organizations = Organizations.find({}, {fields: {_id: true}}).fetch();
 
-		for(let i = 1; i < 31; i++){
+		for(let i = 1; i < 41; i++){
 			const category 		= categories[Math.floor(Math.random()*categories.length)];
 			const city 			= cities[Math.floor(Math.random()*cities.length)];
 			const organization 	= organizations[Math.floor(Math.random()*organizations.length)];
@@ -157,6 +157,28 @@ Meteor.startup(function(){
 				shortDescription: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.',
 				category: category._id,
 				city: city._id,
+				organizationId: organization._id,
+				targetBudget: 1000000*i,
+				targetVolunteers: 2*i,
+				address: "Address "+i,
+				scheduledDate: "2016-09-14T03:13:00.135Z",
+				contactPhone: 123456123,
+			}
+
+			Events.insert(event);
+		}
+
+		for(let i = 42; i < 62; i++){
+			const category 		= categories[Math.floor(Math.random()*categories.length)];
+			const organization 	= organizations[Math.floor(Math.random()*organizations.length)];
+			let bogota = Cities.findOne({ name: "Bogotá"});
+
+			const event = {
+				name: "Accion #"+i,
+				description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
+				shortDescription: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.',
+				category: category._id,
+				city: bogota._id,
 				organizationId: organization._id,
 				targetBudget: 1000000*i,
 				targetVolunteers: 2*i,
