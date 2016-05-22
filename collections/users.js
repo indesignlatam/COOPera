@@ -11,6 +11,8 @@ Meteor.users.helpers({
 
         let today = new Date();
 
+        let bogota = Cities.findOne({name:"Bogotá"});
+
         let query = {};
         if (user.profile.categories && user.profile.categories.length > 0) {
             query.category = {
@@ -19,6 +21,7 @@ Meteor.users.helpers({
             query.scheduledDate = {
               $gte: today
             };
+            query.city = bogota._id;
         }
         return Events.find(query, {sort:{ volunteerCount:-1, scheduledDate: 1}});
     },
