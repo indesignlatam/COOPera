@@ -6,9 +6,10 @@ Template.eventDetail.onRendered(function eventDetailOnRendered() {
 	$('html, body').scrollTop(0);
 
 	this.autorun(() => {
-		if(this.subscriptionsReady()){
 			const event = Events.findOne(this.eventId);
-			document.title = event.name + ' | Eventos';
+			if(event){
+				document.title = event.name + ' | Eventos';
+			}
 
 			setTimeout(function() {
 				const eventSwiper = new Swiper('.swiper-container', {
@@ -17,7 +18,6 @@ Template.eventDetail.onRendered(function eventDetailOnRendered() {
 					observer: true
 				});
 			}, 1000);
-		}
 	});
 });
 
