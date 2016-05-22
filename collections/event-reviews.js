@@ -9,7 +9,8 @@ const EventReviewsSchema = new SimpleSchema({
 	text: {
 		type: String,
 		label: "Comentario",
-		max: 500
+		max: 500,
+		optional:true
 	},
 	eventId: {
 		type: String,

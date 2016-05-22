@@ -61,25 +61,46 @@
           <p style="font-size: 1rem">
             {{event.description}}
           </p>
-
-				<div class="ui threaded comments" style="margin-top: 50px">
-					<h3 class="ui dividing header">Comentarios</h3>
-          {{#if currentUser}}
-          <form class="ui reply form" id="commentForm">
-            <div class="field">
-              <textarea name="text"></textarea>
-            </div>
-            <button class="ui blue labeled submit icon button">
-              <i class="icon edit"></i> Comentar
-            </button>
-          </form>
+          {{#if event.eventEnded}}
+          <div class="ui threaded comments" style="margin-top: 50px">
+  					<h3 class="ui dividing header">Comentarios</h3>
+            {{#if currentUser}}
+            <form class="ui reply form" id="commentForm">
+              <div class="field">
+                <textarea name="text"></textarea>
+              </div>
+              <button class="ui blue labeled submit icon button">
+                <i class="icon edit"></i> Comentar
+              </button>
+            </form>
+            {{else}}
+            <h3 class="text-muted">Debes estar registrado para comentar</h3>
+            {{/if}}
+  					{{#each comment in comments}}
+  						{{> eventComment comment=comment}}
+  					{{/each}}
+  				</div>
           {{else}}
-          <h3 class="text-muted">Debes estar registrado para comentar</h3>
+          <div class="ui threaded comments" style="margin-top: 50px">
+            <h3 class="ui dividing header">Comentarios</h3>
+            {{#if currentUser}}
+            <form class="ui reply form" id="commentForm">
+              <div class="field">
+                <textarea name="text"></textarea>
+              </div>
+              <button class="ui blue labeled submit icon button">
+                <i class="icon edit"></i> Comentar
+              </button>
+            </form>
+            {{else}}
+            <h3 class="text-muted">Debes estar registrado para comentar</h3>
+            {{/if}}
+            {{#each comment in comments}}
+              {{> eventComment comment=comment}}
+            {{/each}}
+          </div>
           {{/if}}
-					{{#each comment in comments}}
-						{{> eventComment comment=comment}}
-					{{/each}}
-				</div>
+
 			</div>
 
       <div class="five wide column">
@@ -165,5 +186,6 @@
 
     {{> donateModal}}
     {{> shareModal}}
+    {{> reviewModal}}
     {{> imageUploadModal}}
 </template>

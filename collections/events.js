@@ -189,6 +189,18 @@ Events.helpers({
 	},
 	organizationData(){
 		return Organizations.findOne(this.organizationId);
+	},
+	hasEnded(){
+		let today = new Date();
+		setInterval(() => {
+			 today = new Date();
+		}, 60000);
+
+		let event = Events.find({_id:this._id, scheduledDate:{ $lt: today}});
+		if(event.count() > 0){
+			return true
+		}
+		return false
 	}
 });
 

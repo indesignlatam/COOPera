@@ -6,11 +6,13 @@ Template.eventDetail.onRendered(function eventDetailOnRendered() {
 	$('html, body').scrollTop(0);
 
 	this.autorun(() => {
-			const event = Events.findOne(this.eventId);
+			let event = Events.findOne(this.eventId);
 			if(event){
 				document.title = event.name + ' | Eventos';
+				if(event.isVolunteer() && event.hasEnded()){
+					$('#reviewModal').modal('show');
+				}
 			}
-
 			setTimeout(function() {
 				const eventSwiper = new Swiper('.swiper-container', {
 					pagination: '.swiper-pagination',

@@ -12,7 +12,7 @@ Template.eventWide.events({
 });
 
 Template.eventWide.helpers({
-	helper() {
-		return 'miaw';
-	}
+	// helper() {
+	// 	return 'miaw';
+	// }
 });
