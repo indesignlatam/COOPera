@@ -31,6 +31,12 @@ Template.myEvents.helpers({
 			return user.popularEvents();
 		}
 	},
+	my_popular_events_count(){
+		const user = Meteor.user();
+		if(user){
+			return user.popularEvents().count();
+		}
+	},
 	my_events_count(){
 		const user = Meteor.user();
 		if(user){
@@ -50,6 +56,18 @@ Template.myEvents.helpers({
 		const user = Meteor.user();
 		if(user){
 			return user.recommendedEvents().count();
+		}
+	},
+	myExecutedEvents(){
+		const user = Meteor.user();
+		if(user){
+			return user.myExecutedEvents();
+		}
+	},
+	myExecutedEventsCount(){
+		const user = Meteor.user();
+		if(user){
+			return user.myExecutedEvents().count();
 		}
 	},
 	segment1(){

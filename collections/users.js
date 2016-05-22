@@ -9,14 +9,18 @@ Meteor.users.helpers({
           return 'Error'
         }
 
+        let today = new Date();
+
         let query = {};
         if (user.profile.categories && user.profile.categories.length > 0) {
             query.category = {
                 $in: user.profile.categories
             };
+            query.scheduledDate = {
+              $gte: today
+            };
         }
-
-        return Events.find(query);
+        return Events.find(query, {sort:{ volunteerCount:-1, scheduledDate: 1}});
     },
     myEvents(){
       let user = Meteor.user()
@@ -52,5 +56,11 @@ Meteor.users.helpers({
   		}else{
         return Events.find(1);
       }
+    },
+    myExecutedEvents(){
+      let user = Meteor.user()
+      let organizationId = user.profile.organizationId;
+      let cursor = Events.find({organizationId:organizationId, scheduledDate:{	$lt: today }}, { fields: Events.basicFields});
+      return cursor;
     }
 });
