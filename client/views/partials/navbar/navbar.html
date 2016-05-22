@@ -31,7 +31,6 @@
 						<i class="ui dropdown icon"></i>
 						<div class="menu">
 							<a class="{{isSelectedItem 'account'}} item" href="{{path 'account'}}">Mi cuenta</a>
-							<a class="{{isSelectedItem 'myEvents'}} item" href="{{path 'myEvents'}}">Mis acciones</a>
 							{{#if isInRole 'admin' 'default-group'}}
 								<a class="item" href="/admin">Panel de Control</a>
 							{{/if}}
