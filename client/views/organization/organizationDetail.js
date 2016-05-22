@@ -1,7 +1,5 @@
 Template.organizationDetail.onCreated(function organizationDetailOnCreated() {
-	this.autorun((v) => {
-		this.subscribe('subscription');
-	});
+
 });
 
 Template.organizationDetail.onRendered(function organizationDetailOnRendered() {

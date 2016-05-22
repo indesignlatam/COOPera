@@ -1,8 +1,5 @@
 Template.eventCreate.onCreated(function eventCreateOnCreated() {
-	this.autorun((v) => {
-		this.subscribe('event-categories');
-		this.subscribe('cities');
-	});
+
 });
 
 Template.eventCreate.onRendered(function eventCreateOnRendered() {

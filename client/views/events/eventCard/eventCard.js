@@ -1,8 +1,5 @@
 Template.eventCard.onCreated(function eventCardOnCreated() {
-	this.autorun((v) => {
-		this.subscribe('event-donations', Template.instance().data._id);
-		this.subscribe('event-pictures', Template.instance().data._id);
-	});
+
 });
 
 Template.eventCard.onRendered(function eventCardOnRendered() {

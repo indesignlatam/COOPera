@@ -1,7 +1,5 @@
 Template.eventWide.onCreated(function eventWideOnCreated() {
-	this.autorun((v) => {
-		this.subscribe('subscription');
-	});
+
 });
 
 Template.eventWide.onRendered(function eventWideOnRendered() {

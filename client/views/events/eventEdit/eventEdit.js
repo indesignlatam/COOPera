@@ -1,10 +1,5 @@
 Template.eventEdit.onCreated(function eventEditOnCreated() {
 	this.id = FlowRouter.getParam("id");
-	this.autorun((v) => {
-		this.subscribe('events.single', FlowRouter.getParam("id"));
-		this.subscribe('event-categories');
-		this.subscribe('cities');
-	});
 });
 
 Template.eventEdit.onRendered(function eventEditOnRendered() {
