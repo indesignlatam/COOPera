@@ -21,7 +21,7 @@ Meteor.users.helpers({
             query.scheduledDate = {
               $gte: today
             };
-            query.city = bogota._id;
+            query.city = user.profile.city;
         }
         return Events.find(query, {sort:{ volunteerCount:-1, scheduledDate: 1}});
     },
