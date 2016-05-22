@@ -30,37 +30,55 @@
 						{{my_events_count}}
 						</div>
 						{{#if userIsVolunteer}}
-					 <span id="segment1" class="text-contrast text-h2">Eventos en los que participas</span>
+						<span class="text-contrast text-h2">Acciones en las que participas</span>
 						<br>
 						<div class="near-events-circle text-center text-contrast text-h2 margin-top-small">
-							{{recommendedEventsCount}}
+							32
 						</div>
-						<span id="segment2" class="text-contrast text-h2">Eventos recomendados para ti</span>
+						<span class="text-contrast text-h2">Acciones recomendadas para ti</span>
 						{{/if}}
 						{{#if isOrganization}}
-						<span  id="segment1"  class="text-contrast text-h2">Eventos que estoy organizando</span>
+						<span class="text-contrast text-h2">Acciones que estoy organizando</span>
 						<br>
 						<div class="near-events-circle text-center text-contrast text-h2 margin-top-small">
 							32
 						</div>
-						<span  id="segment2"  class="text-contrast text-h2">Eventos ejecutados</span>
+						<span class="text-contrast text-h2">Acciones ejecutadas</span>
 						{{/if}}
 						{{#if isSponsor}}
-						<span  id="segment1"  class="text-contrast text-h2">Eventos que patrocinas</span>
+						<span class="text-contrast text-h2">Acciones que patrocinas</span>
 						<br>
 						<div class="near-events-circle text-center text-contrast text-h2 margin-top-small">
 							32
 						</div>
-						<span  id="segment2" class="text-contrast text-h2">Eventos populares</span>
+						<span class="text-contrast text-h2">Acciones recomendadas para ti</span>
 						{{/if}}
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
-	{{#if segment1}}
+
+	{{#if Segment1}}
 	<div class="ui container margin-large">
 		{{#if userIsVolunteer}}
+		<h1 class="ui dividing header">Eventos a los que voy a asistir</h1>
+		{{/if}}
+		{{#if isOrganization}}
+		<h1 class="ui dividing header">Eventos que estoy organizando</h1>
+		{{/if}}
+		{{#if isSponsor}}
+		<h1 class="ui dividing header">Eventos que estoy patrocinando</h1>
+		{{/if}}
+		<div class="ui three cards">
+			{{#each recommendedEvents}}
+				{{> eventCard}}
+			{{/each}}
+		</div>
+	</div>
+	{{else}}
+	<div class="ui container margin-large">
+		{{#if isVolunteer}}
 		<h1 class="ui dividing header">Eventos a los que voy a asistir</h1>
 		{{/if}}
 		{{#if isOrganization}}
@@ -74,33 +92,6 @@
 				{{> eventCard}}
 			{{/each}}
 		</div>
-	</div>
-	{{else}}
-	<div class="ui container margin-large">
-		{{#if userIsVolunteer}}
-		<h1 class="ui dividing header">Eventos recomendados para ti</h1>
-		<div class="ui three cards">
-			{{#each recommendedEvents}}
-				{{> eventCard}}
-			{{/each}}
-		</div>
-		{{/if}}
-		{{#if isOrganization}}
-		<h1 class="ui dividing header">Eventos ejecutados</h1>
-		<div class="ui three cards">
-			{{#each my_executed_events}}
-				{{> eventCard}}
-			{{/each}}
-		</div>
-		{{/if}}
-		{{#if isSponsor}}
-		<h1 class="ui dividing header">Eventos populares</h1>
-		<div class="ui three cards">
-			{{#each my_popular_events}}
-				{{> eventCard}}
-			{{/each}}
-		</div>
-		{{/if}}
 	</div>
 	{{/if}}
 
