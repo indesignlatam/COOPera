@@ -1,6 +1,4 @@
-var Users = Meteor.users;
-
-Users.helpers({
+Meteor.users.helpers({
     popularEvents() {
         return Events.find({},{sort:{volunteerCount:-1}, limit:9});
     },
