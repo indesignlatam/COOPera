@@ -4,8 +4,15 @@ Template.NavBar.events({
 		$('#loginModal').modal('show');
 	},
 	'click .logout'(event){
-		Meteor.logout();
-		FlowRouter.go('home');
+		Meteor.logout(function(err, result){
+			if(err){
+				console.log(err);
+			}
+			else{
+				FlowRouter.go('home');
+
+			}
+		});
 		setTimeout(function(){
 			Bert.alert('Esperamos volver a verte muy pronto', 'success');
 		}, 750);
