@@ -91,7 +91,7 @@ Template.search.helpers({
       $and:[
         {'city': {'$regex': '.*' + city || '' + '.*', '$options' : 'i' }},
         {'category': {'$regex': '.*' + category || '' + '.*', '$options' : 'i' }},
-        {'organization': {'$regex': '.*' + organization || '' + '.*', '$options' : 'i' }},
+        {'organizationId': {'$regex': '.*' + organization || '' + '.*', '$options' : 'i' }},
         {
           $or: [
           {'name': {'$regex': '.*' + searchCriteria || '' + '.*', '$options' : 'i' }},
