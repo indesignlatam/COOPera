@@ -5,7 +5,7 @@ Template.NavBar.events({
 	},
 	'click .logout'(event){
 		Meteor.logout();
-		FlowRouter.go('/');
+		FlowRouter.go('home');
 		setTimeout(function(){
 			Bert.alert('Esperamos volver a verte muy pronto', 'success');
 		}, 750);
