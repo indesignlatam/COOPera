@@ -52,6 +52,17 @@ const EventSchema = new SimpleSchema({
 		type: Number,
 		label: "Teléfono de Contacto"
 	},
+	volunteerCount: {
+		type: Number,
+		label: "Cantidad de voluntarios",
+		autoValue() {
+			if(this.isInsert){
+				return 0;
+			}else{
+				this.unset();
+			}
+		}
+	},
 	createdAt: {
 		type: Date,
 		autoValue() {
