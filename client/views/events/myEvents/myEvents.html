@@ -33,7 +33,7 @@
                      <span id="segment1" class="text-contrast text-h2">Acciones en los que participas</span>
                         <br>
                         <div id="segment2circle" class="near-events-circle text-center text-contrast text-h2 margin-top-small">
-                            {{recommendedEventsCount}}
+                        {{recommendedEventsCount}}
                         </div>
                         <span id="segment2" class="text-contrast text-h2">Acciones recomendadas para ti</span>
                         {{/if}}
@@ -61,24 +61,45 @@
     {{#if segment1}}
     <div class="ui container margin-large">
         {{#if userIsVolunteer}}
-        <h1 class="ui dividing header">Eventos a los que voy a asistir</h1>
+        <h1 class="ui dividing header">Acciones a las que voy a asistir</h1>
         {{/if}}
         {{#if isOrganization}}
-        <h1 class="ui dividing header">Eventos que estoy organizando</h1>
+        <h1 class="ui dividing header">Acciones que estoy organizando</h1>
         {{/if}}
         {{#if isSponsor}}
-        <h1 class="ui dividing header">Eventos que estoy patrocinando</h1>
+        <h1 class="ui dividing header">Acciones que estoy patrocinando</h1>
         {{/if}}
+        {{#if my_events_count = 0}}
+          {{#if userIsVolunteer}}
+            <p class="text-center">No estas tomando acción, encuentra como cambiar tu comunidad aquí:</p>
+            <div class="text-center button-action">
+              <a href="{{path 'search'}}" class="ui primary button">Buscar Acciones</a>
+            </div>
+          {{/if}}
+          {{#if isOrganization}}
+            <p class="text-center">No has creado ninguna acción, cambia tu comunidad aquí:</p>
+            <div class="text-center button-action">
+              <a href="{{path 'eventCreate'}}" class="ui primary button">Crear Acciones</a>
+            </div>
+          {{/if}}
+          {{#if isSponsor}}
+            <p class="text-center">No estas patrocinando ninguna acción, cambia tu comunidad aquí:</p>
+            <div class="text-center button-action">
+              <a href="{{path 'search'}}" class="ui primary button">Buscar Acciones</a>
+            </div>
+          {{/if}}
+        {{else}}
         <div class="ui three cards">
             {{#each my_events}}
                 {{> eventCard}}
             {{/each}}
         </div>
+        {{/if}}
     </div>
     {{else}}
     <div class="ui container margin-large">
         {{#if userIsVolunteer}}
-        <h1 class="ui dividing header">Eventos recomendados para ti</h1>
+        <h1 class="ui dividing header">Acciones recomendadas para ti</h1>
         <div class="ui three cards">
             {{#each recommendedEvents}}
                 {{> eventCard}}
@@ -86,7 +107,7 @@
         </div>
         {{/if}}
         {{#if isOrganization}}
-        <h1 class="ui dividing header">Eventos ejecutados</h1>
+        <h1 class="ui dividing header">Acciones ejecutadas</h1>
         <div class="ui three cards">
             {{#each myExecutedEvents}}
                 {{> eventCard}}
@@ -94,7 +115,7 @@
         </div>
         {{/if}}
         {{#if isSponsor}}
-        <h1 class="ui dividing header">Eventos populares</h1>
+        <h1 class="ui dividing header">Acciones populares</h1>
         <div class="ui three cards">
             {{#each my_popular_events}}
                 {{> eventCard}}

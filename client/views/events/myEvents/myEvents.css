@@ -9,7 +9,7 @@
 }
 
 .near-events-circle:hover {
-	background-color: rgba(36, 36, 143, 0.2);	
+	background-color: rgba(36, 36, 143, 0.2);
 }
 
 #segment1, #segment2 {
@@ -31,4 +31,8 @@
 	height: 200px;
 	margin: 50px 0;
 	padding: 25px
+}
+
+.button-action {
+	padding-bottom: 20px;
 }
