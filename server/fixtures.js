@@ -29,8 +29,7 @@ Meteor.startup(function(){
 			{name: "Derechos humanos"},
 			{name: "Animales"},
 			{name: "Medio Ambiente"},
-			{name: "Discapacitados"},
-			{name: "Medio Ambiente"}
+			{name: "Discapacitados"}
 		]
 
 		categories.map((category) => {

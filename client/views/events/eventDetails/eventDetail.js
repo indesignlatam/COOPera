@@ -70,7 +70,7 @@ Template.eventDetail.events({
 			eventId: instance.eventId
 		}
 
-		Meteor.call('event_comments.create', data, function(error, result){
+		Meteor.call('event.comments.create', data, function(error, result){
 			$(event.currentTarget).removeClass('loading');
 
 			if(error){
