@@ -48,6 +48,8 @@ Users.helpers({
   			let uniqueEventIds = _.uniq(eventIds);
   			let cursor =  Events.find({_id: {$in: uniqueEventIds}, scheduledDate:{ $gte: today }},{fields: Events.basicFields });
   			return cursor;
-  		}
+  		}else{
+        return Events.find(1);
+      }
     }
 });
