@@ -69,23 +69,23 @@
         {{#if isSponsor}}
         <h1 class="ui dividing header">Acciones que estoy patrocinando</h1>
         {{/if}}
-        {{#if my_events_count = 0}}
+        {{#if hasEvents}}
           {{#if userIsVolunteer}}
-            <p class="text-center">No estas tomando acción, encuentra como cambiar tu comunidad aquí:</p>
+            <p class="text-center text-h3">No estas tomando acción, encuentra como cambiar tu comunidad aquí:</p>
             <div class="text-center button-action">
-              <a href="{{path 'search'}}" class="ui primary button">Buscar Acciones</a>
+              <a href="{{path 'search'}}" class="huge ui primary button">Buscar Acciones</a>
             </div>
           {{/if}}
           {{#if isOrganization}}
-            <p class="text-center">No has creado ninguna acción, cambia tu comunidad aquí:</p>
-            <div class="text-center button-action">
-              <a href="{{path 'eventCreate'}}" class="ui primary button">Crear Acciones</a>
+            <p class="text-center text-h3">No has creado ninguna acción, cambia tu comunidad aquí:</p>
+            <div class="text-center button-action ">
+              <a href="{{path 'eventCreate'}}" class="huge ui primary button">Crear Acciones</a>
             </div>
           {{/if}}
           {{#if isSponsor}}
-            <p class="text-center">No estas patrocinando ninguna acción, cambia tu comunidad aquí:</p>
+            <p class="text-center text-h3">No estas patrocinando ninguna acción, cambia tu comunidad aquí:</p>
             <div class="text-center button-action">
-              <a href="{{path 'search'}}" class="ui primary button">Buscar Acciones</a>
+              <a href="{{path 'search'}}" class="huge ui primary button">Buscar Acciones</a>
             </div>
           {{/if}}
         {{else}}

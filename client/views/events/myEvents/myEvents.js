@@ -1,6 +1,15 @@
 Template.myEvents.onCreated(function myEventsOnCreated() {
-	this.segment1 = new ReactiveVar(true);
-	this.segment2 = new ReactiveVar(false);
+	this.segment1 = new ReactiveVar();
+	this.segment2 = new ReactiveVar();
+	const user = Meteor.user();
+	if(user){
+		if(user.myEvents().count() > 0){
+			this.segment1 = new ReactiveVar(true);
+		}
+		else{
+			this.segment2 = new ReactiveVar(false);
+		}
+	}
 });
 
 Template.myEvents.onRendered(function myEventsOnRendered() {
@@ -11,18 +20,14 @@ Template.myEvents.events({
 	'click #segment1'(event, instance) {
 		Template.instance().segment1.set(true);
 		Template.instance().segment2.set(false);
+		$("#segment1").addClass("active-link");
+		$("#segment2").removeClass("active-link");
 	},
 	'click #segment2'(event, instance) {
 		Template.instance().segment1.set(false);
 		Template.instance().segment2.set(true);
-	},
-	'click #segment1circle'(event, instance) {
-		Template.instance().segment1.set(true);
-		Template.instance().segment2.set(false);
-	},
-	'click #segment2circle'(event, instance) {
-		Template.instance().segment1.set(false);
-		Template.instance().segment2.set(true);
+		$("#segment1").removeClass("active-link");
+		$("#segment2").addClass("active-link");
 	}
 });
 
@@ -78,16 +83,21 @@ Template.myEvents.helpers({
 			return user.myExecutedEvents().count();
 		}
 	},
+	hasEvents(){
+		const user = Meteor.user();
+		if(user){
+			if(user.myEvents().count() > 0){
+				return false;
+			}
+			else{
+				return true;
+			}
+		}
+	},
 	segment1(){
 		return Template.instance().segment1.get();
 	},
 	segment2(){
 		return Template.instance().segment2.get();
-	},
-	segment1circle(){
-		return Template.instance().segment1circle.get();
-	},
-	segment2circle(){
-		return Template.instance().segment2circle.get();
 	}
 });
